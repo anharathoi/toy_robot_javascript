@@ -1,4 +1,4 @@
-const { Robot }  = require('../Robot/robot')
+const { Robot }  = require('../robot/robot')
 
 // robot instance
 describe("new Robot", () => {
@@ -100,3 +100,170 @@ describe(".move()", () => {
   })
 })
 
+// turn method
+describe("turn left", () => {
+  describe("while facing north", () => {
+    let robot = new Robot
+    robot.place(0, 0, "NORTH")
+  
+    test('turns left to face west', () => {
+      robot.turnLeft()
+      expect(robot.direction).toBe("WEST")
+    })
+  })
+  
+  describe("while facing south", () => {
+    let robot = new Robot
+    robot.place(0, 0, "SOUTH")
+
+    test('turns left to face east', () => {
+      robot.turnLeft()
+      expect(robot.direction).toBe("EAST")
+    })
+  })
+
+  describe("while facing east", () => {
+    let robot = new Robot
+    robot.place(0, 0, "EAST")
+  
+    test('turns left to face north', () => {
+      robot.turnLeft()
+      expect(robot.direction).toBe("NORTH")
+    })
+  })
+
+  describe("while facing west", () => {
+    const robot = new Robot
+    robot.place(0, 0, "WEST")
+
+    test('turns left to face south', () => {
+      robot.turnLeft()
+      expect(robot.direction).toBe("SOUTH")
+    })
+  })
+})
+
+describe("turn right", () => {
+  describe("while facing north", () => {
+    let robot = new Robot
+    robot.place(0, 0, "NORTH")
+    test('turns right to face east', () => {
+      robot.turnRight()
+      expect(robot.direction).toBe("EAST")
+    })
+  })
+
+  describe("while facing south", () => {
+    let robot = new Robot
+    robot.place(0, 0, "SOUTH")
+
+    test('turns right to face west', () => {
+      robot.turnRight()
+      expect(robot.direction).toBe("WEST")
+    })
+  })
+
+  describe("while facing east", () => {
+    let robot = new Robot
+    robot.place(0, 0, "EAST")
+  
+    test('turns right to face ', () => {
+      robot.turnRight()
+      expect(robot.direction).toBe("SOUTH")
+    })
+  })
+
+  describe("while facing west", () => {
+    const robot = new Robot
+    robot.place(0, 0, "WEST")
+
+    test('turns right to face north', () => {
+      robot.turnRight()
+      expect(robot.direction).toBe("NORTH")
+    })
+  })
+})
+
+
+
+
+// turn method
+  
+
+  
+  
+  
+  // describe("while facing west", () => {
+  //   const robot = new Robot(0, 0, "WEST")
+  
+  //   test('moving west', () => {
+  //     robot.move()
+  //     expect(robot.x).toBe(-1)
+  //   })
+    
+  //   test('turns left to face south', () => {
+  //     robot.turnLeft()
+  //     expect(robot.direction).toBe("SOUTH")
+  //   })
+  // })
+  
+
+
+// describe(".move()", () => {
+//   describe("while facing north", () => {
+//     const robot = new Robot(0, 0, "NORTH")
+  
+//     test('moving north', () => {
+//       robot.move()
+//       expect(robot.y).toBe(1)
+//     })
+  
+//     test('turns left to face west', () => {
+//       robot.turnLeft()
+//       expect(robot.direction).toBe("WEST")
+//     })
+//   })
+  
+//   describe("while facing south", () => {
+//     const robot = new Robot(0, 0, "SOUTH")
+  
+//     test('moving south', () => {
+//       robot.move()
+//       expect(robot.y).toBe(-1)
+//     })
+  
+//     test('turns left to face east', () => {
+//       robot.turnLeft()
+//       expect(robot.direction).toBe("EAST")
+//     })
+//   })
+  
+//   describe("while facing east", () => {
+//     const robot = new Robot(0, 0, "EAST")
+    
+//     test('moving east', () => {
+//       robot.move()
+//       expect(robot.x).toBe(1)
+//     })
+  
+//     test('turns left to face north', () => {
+//       robot.turnLeft()
+//       expect(robot.direction).toBe("NORTH")
+//     })
+//   })
+  
+//   describe("while facing west", () => {
+//     const robot = new Robot(0, 0, "WEST")
+  
+//     test('moving west', () => {
+//       robot.move()
+//       expect(robot.x).toBe(-1)
+//     })
+    
+//     test('turns left to face south', () => {
+//       robot.turnLeft()
+//       expect(robot.direction).toBe("SOUTH")
+//     })
+//   })
+  
+// })
