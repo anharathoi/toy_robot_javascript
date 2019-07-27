@@ -10,7 +10,7 @@ describe("new Robot", () => {
 })
 
 // place method
-describe("placing robot on the board", () => {
+describe("placing robot correctly on the board", () => {
   let robot = new Robot
   robot.place(0, 0, "SOUTH")
   test("robot has an x position", () => {

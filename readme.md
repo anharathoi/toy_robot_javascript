@@ -80,3 +80,13 @@ W   E
   S
 ```
 
+// robot can move
+
+// table has area
+
+// simulator will have the rules
+- will take the board dimension
+- will 
+-
+- cannot go over the table boundary
+  - define the boundaries from the table
