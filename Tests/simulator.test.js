@@ -57,6 +57,42 @@ describe("moveRobot", () => {
    
     expect(global.console.error).toHaveBeenCalledWith("\nInvalid move, please turn\n")
   })
+
+  test("checks valid move on east direction", () => {
+    let simulator = new Simulator
+    simulator.createTable(5, 5)
+    simulator.placeRobot(0, 0, "EAST")
+    simulator.moveRobot()
+
+    expect(simulator.robot.x).toEqual(1)
+  })
+
+  test("checks valid move on west direction", () => {
+    let simulator = new Simulator
+    simulator.createTable(5, 5)
+    simulator.placeRobot(5, 5, "WEST")
+    simulator.moveRobot()
+
+    expect(simulator.robot.x).toEqual(4)
+  })
+
+  test("checks valid move on south direction", () => {
+    let simulator = new Simulator
+    simulator.createTable(5, 5)
+    simulator.placeRobot(5, 5, "SOUTH")
+    simulator.moveRobot()
+
+    expect(simulator.robot.y).toEqual(4)
+  })
+
+  test("checks valid move on north direction", () => {
+    let simulator = new Simulator
+    simulator.createTable(5, 5)
+    simulator.placeRobot(0, 0, "NORTH")
+    simulator.moveRobot()
+
+    expect(simulator.robot.y).toEqual(1)
+  })
 })
 
 describe("turnRobot", () => {

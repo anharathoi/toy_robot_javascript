@@ -3,12 +3,11 @@ const readlineSync = require("readline-sync")
 
 const help = `
 Robot Commands:
-board 5, 5      This will generate a board with 5x and 5y unit
-place X, Y, F   This command will place the robot on a table
-                where X, Y should be in between 0 and x/y axis unit
-                and F could be north, south, east or west
+board           This will ask for table dimensions
+place           This command will ask for robot placement
+                e.g. 2, 3, NORTH
 move            This command will move the robot one unit forward
-left or right   Rotate robot face left or right
+turn            Rotate robot face left or right
 report          Print out robot's current position
 help            To see help message
 quit            Exit from this simulator
