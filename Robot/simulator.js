@@ -1,60 +1,34 @@
 const { Robot } = require('./robot')
 const { Table } = require('./table')
-const csv = require('csv-parser')
-const fs = require('fs')
-
 
 class Simulator{
-  constructor(table, robot){
-    this.table = table
-    this.robot = robot
-    this.commands = []
+  constructor(){
+    this.table = null
+    this.robot = null
   }
 
-  placeRobotOnTable(x, y, F){
-    if(x > this.table.width || y > this.table.length){
-      throw "Robot cannot be placed here"
+  createTable(x, y){
+    if(x < 0 || y < 0 ){
+      throw new Error("Invalid table dimensions")
     } else {
-      return this.robot.place(x, y, F)
+      this.table = new Table(x, y)
     }
   }
 
-  move(){
+  placeRobot(x, y, direction){
+    this.robot = new Robot()
+    x = parseInt(x)
+    y = parseInt(y)
+    this.robot.place(x, y, direction)
+  }
+
+  moveRobot(){
     this.robot.move()
   }
 
-  readFromCSV(path){
-    const commands = [];
-    fs.createReadStream(path)
-      .pipe(csv({ separator: '\n', headers: false } ))
-      .on('data', (data) => commands.push(data))
-      .on('end', () => {
-        commands.forEach(async command => {
-          await this.commands.push(command['0'])
-        })
-      });
+  turnRobot(side){
+    side === "left" ? this.robot.turnLeft() : this.robot.turnRight() 
   }
-
-  // runCommands(commands){
-  //   commands.forEach( command => {
-  //     command['0'].toLowerCase()
-  //   })
-  // }
-
-  // runSimulation(path){
-  //   this.readFromCSV(path)
-  // }
-
 }
 
-let robot = new Robot
-let table = new Table(5, 5)
-let simulator = new Simulator(table, robot)
-
-// simulator.placeRobotOnTable(5, 6, "EAST")
-
-simulator.readFromCSV('../data.csv')
-console.log(simulator.commands)
-
-// console.log(robot)
-// module.exports = { Simulator }
+module.exports = { Simulator }

@@ -13,6 +13,7 @@
     "jest": "^24.8.0"
   },
   "dependencies": {
-    "csv-parser": "^2.3.0"
+    "csv-parser": "^2.3.0",
+    "readline-sync": "^1.4.10"
   }
 }
