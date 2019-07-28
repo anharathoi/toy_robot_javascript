@@ -1,12 +1,12 @@
 class Robot {
 
-  place(x, y, direction){
+  place(x, y, direction) {
     this.x = x
     this.y = y
     this.direction = direction
   }
 
-  move(){
+  move() {
     switch(this.direction) {
       case "NORTH":
           this.y += 1
@@ -25,7 +25,7 @@ class Robot {
     }
   }
 
-  report(){
+  report() {
     return {
       x: this.x,
       y: this.y,
@@ -33,7 +33,7 @@ class Robot {
     }
   }
 
-  turnLeft(){
+  turnLeft() {
     switch(this.direction) {
       case "NORTH":
           this.direction = "WEST"
@@ -52,7 +52,7 @@ class Robot {
     }
   }
 
-  turnRight(){
+  turnRight() {
     switch(this.direction) {
       case "NORTH":
           this.direction = "EAST"

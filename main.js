@@ -1,5 +1,5 @@
-const { Simulator } = require('./robot/simulator')
-const readlineSync = require('readline-sync')
+const { Simulator } = require("./robot/simulator")
+const readlineSync = require("readline-sync")
 
 const help = `
 Robot Commands:
@@ -13,74 +13,43 @@ report          Print out robot's current position
 help            To see help message
 quit            Exit from this simulator
 `
+
+console.log(help)
+
 let response
 const simulator = new Simulator
 
 const runCommand = (command) => {
   switch(command){
     case "board":
-      console.log("INSIDE board")
-      let length = readlineSync.question('length? ')
-      let width = readlineSync.question('width? ')
+      let length = readlineSync.question("length?: ")
+      let width = readlineSync.question("width?: ")
       simulator.createTable(width, length)
-      console.log(simulator.table)
       break;
     case "place":
-    // cannot play unless table is defined
-      console.log("INSIDE place")
-      if(!simulator.table) {
-        console.log("Please define table first")
-        break;
-      }
-      let placement = readlineSync.question('please define x, y coordinates and direction for robot:\n ')
-      simulator.placeRobot(...placement.split(','))
+      let placement = readlineSync.question("please define x, y coordinates and direction for robot:\n")
+      simulator.placeRobot(...placement.split(","))
       break;
     case "move":
-      console.log("INSIDE move")
-      // move robot
-      // cannot play unless table is defined
-      // cannot play unless robot is defined
-      if(!simulator.table || !simulator.robot) {
-        console.log("Please define table first")
-        break
-      }
-      if(simulator.table.x <= simulator.robot.x || simulator.table.y <= simulator.robot.y ){
-        console.log("Invalid move")
-        break
-      }
       simulator.moveRobot()
       break
     case "turn":
-      console.log("INSIDE turn")
-      // cannot play unless table is defined
-      if(!simulator.table || !simulator.robot) {
-        console.log("Please define table first")
-      }
-      let side = readlineSync.question("type 'left' to turn left, 'right' to turn right")
+      let side = readlineSync.question("type 'left' to turn left, 'right' to turn right\n")
       simulator.turnRobot(side)
       break;
     case "report":
-    // report position
-      console.log("INSIDE report")
       console.log(simulator.robot.report())
     break;
-    case "quit":
-    // quit simulation
-    console.log("INSIDE quit")
-    break;
     case "help":
-      // show help message
-      console.log("INSIDE help")
+      console.log(help)
       break;
     default: 
-      console.log("Enter a valid command")
+      console.error("\nEnter a valid command or try help.\n")
       break;
   }
-
 }
 
 while(response !== "quit"){
-  console.log(help)
-  response = readlineSync.question('Type your command here:\n')
+  response = readlineSync.question("\nType your command here:\n")
   runCommand(response)
 }
