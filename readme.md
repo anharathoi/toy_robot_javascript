@@ -86,7 +86,23 @@ W   E
 
 // simulator will have the rules
 - will take the board dimension
-- will 
--
 - cannot go over the table boundary
   - define the boundaries from the table
+
+
+1. Read from a csv file (from root directory)
+2. Parse csv to get data
+  csv: PLACE(3, 2, "NORTH"), MOVE, MOVE, LEFT, MOVE
+  parsed data:
+  [ "PLACE(3, 2, 'NORTH')", "MOVE", "MOVE", "LEFT", "MOVE"]
+3. Iterate through array and execute commands
+4. Report final position
+  e.g.: {
+    x: 2
+    y: 4
+    direction: WEST
+  }
+
+Assumptions:
+  - If board not created a default board with 5 x 5 grid will be created
+  - Each csv will have data for one simulation
