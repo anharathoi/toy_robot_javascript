@@ -42,7 +42,9 @@ const runCommand = (command) => {
     case "help":
       console.log(help)
       break;
-    default: 
+    case "quit":
+      break;
+    default:
       console.error("\nEnter a valid command or try help.\n")
       break;
   }
